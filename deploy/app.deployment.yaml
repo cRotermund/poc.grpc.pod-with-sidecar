@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: title
+  labels:
+    app: title
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      name: app
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: nginx #todo
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+      
