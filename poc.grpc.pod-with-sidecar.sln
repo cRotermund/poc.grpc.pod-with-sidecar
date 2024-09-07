@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Host", "src\Runtime.Host\Runtime.Host.csproj", "{A782CCBA-07D9-441C-8C5A-9E245C4E695B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Agent", "src\Runtime.Agent\Runtime.Agent.csproj", "{A782CCBA-07D9-441C-8C5A-9E245C4E695B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{63A5935D-81AD-4FE6-ADC8-0A160661D267}"
 EndProject
@@ -8,12 +8,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{306D8B05-B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.Worker", "src\Runtime.Worker\Runtime.Worker.csproj", "{274FE159-6642-427E-9F46-2BB5F0729D2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.grpc", "src\Runtime.grpc\Runtime.grpc.csproj", "{636E8269-3FB6-4D18-A07B-CCFF16D30B1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime.proto", "src\Runtime.proto\Runtime.proto.csproj", "{636E8269-3FB6-4D18-A07B-CCFF16D30B1A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{F0C1BA1A-C0E5-480D-9D86-F1501AA2B40E}"
 	ProjectSection(SolutionItems) = preProject
 		deploy\app.deployment.yaml = deploy\app.deployment.yaml
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{EEAE6DA6-4D0C-47FB-84A2-609CE7B7094A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local", "local", "{ECAFBE81-A64B-47FE-B0DD-3AF7775D0CB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +42,6 @@ Global
 		{A782CCBA-07D9-441C-8C5A-9E245C4E695B} = {63A5935D-81AD-4FE6-ADC8-0A160661D267}
 		{274FE159-6642-427E-9F46-2BB5F0729D2E} = {63A5935D-81AD-4FE6-ADC8-0A160661D267}
 		{636E8269-3FB6-4D18-A07B-CCFF16D30B1A} = {63A5935D-81AD-4FE6-ADC8-0A160661D267}
+		{ECAFBE81-A64B-47FE-B0DD-3AF7775D0CB7} = {EEAE6DA6-4D0C-47FB-84A2-609CE7B7094A}
 	EndGlobalSection
 EndGlobal

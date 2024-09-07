@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package GenericServices.Proto;
+
+message WorkInput {
+  string message = 1;
+}
+
+message WorkOutput {
+  string message = 1;
+}
+
+service WorkDispatchChannel {
+  rpc Connect(stream WorkOutput) returns (stream WorkInput) {}
+}

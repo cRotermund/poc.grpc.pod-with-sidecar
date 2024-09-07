@@ -1,14 +1,17 @@
-﻿FROM mcr.microsoft.com/dotnet/runtime:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER $APP_UID
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["src/Runtime.Worker/Runtime.Worker.csproj", "src/Runtime.Worker/"]
-RUN dotnet restore "src/Runtime.Worker/Runtime.Worker.csproj"
-COPY . .
-WORKDIR "/src/src/Runtime.Worker"
+
+COPY ["Runtime.Worker.csproj", "Runtime.Worker/"]
+RUN dotnet restore "Runtime.Worker/Runtime.Worker.csproj"
+
+COPY [".", "Runtime.Worker/"]
+
+WORKDIR "/src/Runtime.Worker"
 RUN dotnet build "Runtime.Worker.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
@@ -18,4 +21,5 @@ RUN dotnet publish "Runtime.Worker.csproj" -c $BUILD_CONFIGURATION -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+
 ENTRYPOINT ["dotnet", "Runtime.Worker.dll"]

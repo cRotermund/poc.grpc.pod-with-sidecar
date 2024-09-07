@@ -1,26 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: title
+  name: worker-poc
   labels:
-    app: title
+    app: worker-poc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app
+      app: worker-poc
   template:
     metadata:
-      name: app
+      name: worker-poc
       labels:
-        app: app
+        app: worker-poc
     spec:
-      containers:
-        - name: app
-          image: nginx #todo
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 80
-              protocol: TCP
       restartPolicy: Always
-      
+      containers:
+        - name: worker
+          image: runtime-poc-worker:latest
+          imagePullPolicy: Never
+      initContainers:
+        - name: worker-agent
+          image: runtime-poc-agent:latest
+          imagePullPolicy: Never
+          restartPolicy: Always
+          ports:
+            - containerPort: 8888
+              protocol: TCP
